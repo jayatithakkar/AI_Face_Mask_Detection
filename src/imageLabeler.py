@@ -1,54 +1,83 @@
+"""
+ImageLabeler Script for Generating CSVs of Dataset Splits.
+
+This script provides methods to scan dataset directories and generate
+CSV files containing image paths and their corresponding labels for 
+train, test, and val splits.
+
+@author: Dhruvil Patel
+"""
+
 import os
 import pandas as pd
 
-# Define the destination root directory
-destination_root = "FINAL-DATASET-2"  # Where you saved train, val, test folders
+
+class ImageLabeler:
+    def _init_(self, destination_root):
+        """
+        Initialize the ImageLabeler with the destination root directory.
+
+        Args:
+        - destination_root (str): Root directory where train, val, test folders are saved.
+        """
+        self.destination_root = destination_root
+
+    def generate_csv_for_split(self, split_name):
+        """
+        Generate a CSV file for the provided dataset split (train, test, or val).
+
+        Args:
+        - split_name (str): The name of the split ('train', 'test', or 'val').
+        """
+        split_dir = os.path.join(self.destination_root, split_name)
+        data = self._fetch_data_from_split(split_dir)
+        self._save_data_to_csv(data, split_dir, split_name)
+
+    def _fetch_data_from_split(self, split_dir):
+        """
+        Fetch image names and labels from the given directory split.
+
+        Args:
+        - split_dir (str): Directory of the dataset split.
+
+        Returns:
+        - list: A list of tuples containing the index, image name, and label.
+        """
+        indices = []
+        image_names = []
+        labels = []
+        idx = 1
+
+        for label in os.listdir(split_dir):
+            label_dir = os.path.join(split_dir, label)
+            if os.path.isdir(label_dir):
+                for image_name in os.listdir(label_dir):
+                    image_path = os.path.join(label_dir, image_name)
+                    if os.path.isfile(image_path):
+                        indices.append(idx)
+                        image_names.append(image_name)
+                        labels.append(label)
+                        idx += 1
+
+        return indices, image_names, labels
+
+    def _save_data_to_csv(self, data, split_dir, split_name):
+        """
+        Save data to a CSV file.
+
+        Args:
+        - data (tuple): A tuple of lists containing indices, image names, and labels.
+        - split_dir (str): Directory of the dataset split.
+        - split_name (str): The name of the split ('train', 'test', or 'val').
+        """
+        indices, image_names, labels = data
+        df = pd.DataFrame({"Index": indices, "ImageName": image_names, "Label": labels})
+        csv_path = os.path.join(split_dir, f"{split_name}_labels.csv")
+        df.to_csv(csv_path, index=False)
+        print(f"CSV generated for {split_name} at {csv_path}")
 
 
-def generate_csv_for_split(split_name):
-    """
-    Generate a CSV file for the provided dataset split (train, test, or val).
-
-    Parameters:
-    - split_name: The name of the split ('train', 'test', or 'val').
-    """
-    split_dir = os.path.join(destination_root, split_name)
-
-    # Lists to store data for the CSV
-    indices = []
-    image_names = []
-    labels = []
-
-    # Assign an index for each image
-    idx = 1
-
-    # Navigate through each class subdirectory in the split
-    for label in os.listdir(split_dir):
-        label_dir = os.path.join(split_dir, label)
-
-        # Ensure the current label is a directory
-        if os.path.isdir(label_dir):
-            for image_name in os.listdir(label_dir):
-                image_path = os.path.join(label_dir, image_name)
-
-                # Ensure the current item is a file (an image)
-                if os.path.isfile(image_path):
-                    # Append data to our lists
-                    indices.append(idx)
-                    image_names.append(image_name)
-                    labels.append(label)
-                    idx += 1
-
-    # Convert the lists into a DataFrame
-    df = pd.DataFrame({"Index": indices, "ImageName": image_names, "Label": labels})
-
-    # Save the DataFrame to a CSV file
-    csv_path = os.path.join(split_dir, f"{split_name}_labels.csv")
-    df.to_csv(csv_path, index=False)
-    print(f"CSV generated for {split_name} at {csv_path}")
-
-
-# Generate CSVs for train, test, and val splits
-generate_csv_for_split("train")
-generate_csv_for_split("test")
-generate_csv_for_split("val")
+if _name_ == "_main_":
+    labeler = ImageLabeler("FINAL-DATASET-2")
+    for split in ["train", "test", "val"]:
+        labeler.generate_csv_for_split(split)
