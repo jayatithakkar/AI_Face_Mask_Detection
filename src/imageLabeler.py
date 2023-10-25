@@ -77,7 +77,7 @@ class ImageLabeler:
         print(f"CSV generated for {split_name} at {csv_path}")
 
 
-if _name_ == "_main_":
+if __name__ == "_main_":
     labeler = ImageLabeler("FINAL-DATASET-2")
     for split in ["train", "test", "val"]:
         labeler.generate_csv_for_split(split)
