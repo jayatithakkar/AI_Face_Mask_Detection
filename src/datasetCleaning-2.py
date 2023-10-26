@@ -73,7 +73,7 @@ def process_image(image_path):
         return
 
     # Resize image to 224x224
-    img.resize((224, 224)).save(image_path)
+    img.resize((128, 128)).save(image_path)
 
 
 def main(root_directory):

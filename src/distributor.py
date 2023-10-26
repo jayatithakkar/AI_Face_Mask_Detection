@@ -31,7 +31,7 @@ def process_dataset(df, image_column, label_column, base_path, label_mapping=Non
 
     for _, row in df.iterrows():
         old_path = os.path.join(os.getcwd(), base_path, row[image_column])
-        
+
         label = row[label_column]
         if label_mapping:
             label = label_mapping.get(label, "unknown")
@@ -76,11 +76,19 @@ label_mapping = {
 
 # Dataset-2A
 df2a = pd.read_csv("./affectnet-sid/AffectNet/train.csv")
-process_dataset(df2a, 3, 2, os.path.join("affectnet-sid", "AffectNet", "train_images"), label_mapping)
+process_dataset(
+    df2a,
+    3,
+    2,
+    os.path.join("affectnet-sid", "AffectNet", "train_images"),
+    label_mapping,
+)
 
 # Dataset-2B
 df2b = pd.read_csv("./affectnet-sid/AffectNet/valid.csv")
-process_dataset(df2b, 3, 2, os.path.join("affectnet-sid", "AffectNet", "val_images"), label_mapping)
+process_dataset(
+    df2b, 3, 2, os.path.join("affectnet-sid", "AffectNet", "val_images"), label_mapping
+)
 
 # Saving the consolidated labels
 new_df = pd.DataFrame(new_data, columns=["Index", "ImageName", "Label"])

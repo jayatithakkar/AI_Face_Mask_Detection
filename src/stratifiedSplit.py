@@ -33,7 +33,14 @@ class StratifiedSplitter:
         Perform stratified split and move files to the corresponding directories.
         """
         file_paths, labels = self._collect_files_and_labels()
-        train_paths, val_paths, test_paths, train_labels, val_labels, test_labels = self._perform_stratified_split(file_paths, labels)
+        (
+            train_paths,
+            val_paths,
+            test_paths,
+            train_labels,
+            val_labels,
+            test_labels,
+        ) = self._perform_stratified_split(file_paths, labels)
 
         # Move files to corresponding directories
         self._move_files(train_paths, train_labels, "train")
@@ -77,7 +84,11 @@ class StratifiedSplitter:
         )
 
         val_paths, test_paths, val_labels, test_labels = train_test_split(
-            temp_paths, temp_labels, stratify=temp_labels, test_size=0.50, random_state=42
+            temp_paths,
+            temp_labels,
+            stratify=temp_labels,
+            test_size=0.50,
+            random_state=42,
         )
 
         return train_paths, val_paths, test_paths, train_labels, val_labels, test_labels
@@ -95,7 +106,9 @@ class StratifiedSplitter:
         for file_path, label in zip(file_paths, labels):
             dest_folder = os.path.join(destination, label)
             os.makedirs(dest_folder, exist_ok=True)
-            shutil.move(file_path, os.path.join(dest_folder, os.path.basename(file_path)))
+            shutil.move(
+                file_path, os.path.join(dest_folder, os.path.basename(file_path))
+            )
 
 
 if __name__ == "__main__":
