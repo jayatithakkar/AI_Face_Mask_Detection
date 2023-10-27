@@ -1,11 +1,13 @@
 # A.I.ducation Analytics
 
+### Team ID: AK_ 12
+
 This repository currently contains a series of scripts designed for processing, cleaning, and managing image datasets. These scripts are specifically tailored to work with facial image datasets and include functionalities such as moving images based on CSV metadata, performing a stratified split, cleaning datasets, and more.
 
 ### Author Information:
-- Dhruvil Patel (40226179) – Data Specialist 
-- Dhruv Nareshkumar Panchal (40234693) – Training Specialist  
-- Jayati Thakkar (40230506) – Evaluation Specialist
+1. Dhruvil Patel (40226179) – Data Specialist 
+2. Dhruv Nareshkumar Panchal (40234693) – Training Specialist  
+3. Jayati Thakkar (40230506) – Evaluation Specialist
 
 ---
 
