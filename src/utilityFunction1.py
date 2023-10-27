@@ -15,7 +15,7 @@ import pandas as pd
 def rename_images(folder_path: str) -> tuple:
     """
     Rename images in the folder based on the given conditions.
-    
+
     Args:
         folder_path (str): The directory path containing the images to be renamed.
 
@@ -29,19 +29,15 @@ def rename_images(folder_path: str) -> tuple:
     for image_name in os.listdir(folder_path):
         base_name = image_name.split(".")[0]
         all_images.append(base_name)
-        
-        conditions = {
-            "_2s": "_1",
-            "_5s": "_2",
-            "_7s": "_3"
-        }
-        
+
+        conditions = {"_2s": "_1", "_5s": "_2", "_7s": "_3"}
+
         for k, v in conditions.items():
             if k in image_name:
                 new_name = image_name.replace(k, v)
                 os.rename(
                     os.path.join(folder_path, image_name),
-                    os.path.join(folder_path, new_name)
+                    os.path.join(folder_path, new_name),
                 )
                 renamed_images[image_name] = new_name
                 break
@@ -49,10 +45,16 @@ def rename_images(folder_path: str) -> tuple:
     return all_images, renamed_images
 
 
-def create_new_csv(all_images: list, renamed_images: dict, csv_path: str, output_csv_path: str, folder_path: str):
+def create_new_csv(
+    all_images: list,
+    renamed_images: dict,
+    csv_path: str,
+    output_csv_path: str,
+    folder_path: str,
+):
     """
     Create a new CSV based on the renamed images and the original CSV.
-    
+
     Args:
         all_images (list): List of all the original image names without extension.
         renamed_images (dict): A dictionary mapping original image names to their new names.
@@ -88,7 +90,7 @@ def create_new_csv(all_images: list, renamed_images: dict, csv_path: str, output
     new_df.to_csv(output_csv_path, index=False)
 
 
-if _name_ == "_main_":
+if __name__ == "_main_":
     all_images, renamed_images = rename_images("./FINAL-DATASET-4")
     create_new_csv(
         all_images,
