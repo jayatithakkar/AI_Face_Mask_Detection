@@ -1,6 +1,6 @@
-# Dataset Processing Scripts
+# A.I.ducation Analytics
 
-This repository contains a series of scripts designed for processing, cleaning, and managing image datasets. These scripts are specifically tailored to work with facial image datasets and include functionalities such as moving images based on CSV metadata, performing a stratified split, cleaning datasets, and more.
+This repository currently contains a series of scripts designed for processing, cleaning, and managing image datasets. These scripts are specifically tailored to work with facial image datasets and include functionalities such as moving images based on CSV metadata, performing a stratified split, cleaning datasets, and more.
 
 ### Author Information:
 - Dhruvil Patel (40226179) – Data Specialist 
@@ -187,6 +187,8 @@ python <script_name>.py
 
 10. **Data Visualization:**
     - Lastly, run `dataVisualization.py` for insights into the dataset.
+
+**After following the above steps meticulously, you will successfully curate a dataset that aligns precisely with the structure and format provided in our reference link.**
 
 ---
 
