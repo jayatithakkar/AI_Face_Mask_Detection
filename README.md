@@ -3,7 +3,7 @@
 ### Team ID: AK_ 12
 
 ### Repository: 
-[https://github.com/Dhruvil189/AI_Facial_Expression_Detection]
+[Github AI_Facial_Expression_Detection](https://github.com/Dhruvil189/AI_Facial_Expression_Detection)
 
 
 
