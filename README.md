@@ -5,13 +5,21 @@
 This repository currently contains a series of scripts designed for processing, cleaning, and managing image datasets. These scripts are specifically tailored to work with facial image datasets and include functionalities such as moving images based on CSV metadata, performing a stratified split, cleaning datasets, and more.
 
 ### Author Information:
-1. Dhruvil Patel (40226179) – Data Specialist 
-2. Dhruv Nareshkumar Panchal (40234693) – Training Specialist  
-3. Jayati Thakkar (40230506) – Evaluation Specialist
+1. **Dhruvil Patel (40226179) – Data Specialist** 
+2. **Dhruv Nareshkumar Panchal (40234693) – Training Specialist**
+3. **Jayati Thakkar (40230506) – Evaluation Specialist**
+
+### Dataset Information:
+1. Dataset-1: [Kaggle - Affectnet Training Data](https://www.kaggle.com/datasets/noamsegal/affectnet-training-data)
+2. Dataset-2: [Kaggle - Affectnet Sid](https://www.kaggle.com/datasets/sidd3k/affectnet-sid)
+3. Dataset-3: [IITH - DAiSEE](https://people.iith.ac.in/vineethnb/resources/daisee/index.html)
+4. Processed Dataset Link: [Google Drive](https://drive.google.com/file/d/1y-snmEcvpFf4qYkxElitwFuLluL5xo1H/view?usp=sharing)
 
 ---
 
-## 1. `distributor.py`
+## Source Code:
+
+### 1. `distributor.py`
 
 This script is designed to read images and their labels from given CSV files, and then copy and organize these images into a new directory structure based on their labels.
 
@@ -23,7 +31,7 @@ This script is designed to read images and their labels from given CSV files, an
 
 ---
 
-## 2. `imageLabeler.py`
+### 2. `imageLabeler.py`
 
 This script is meant to generate CSV files containing the image paths and labels for a given dataset split (train, test, or val).
 
@@ -34,7 +42,7 @@ This script is meant to generate CSV files containing the image paths and labels
 
 ---
 
-## 3. `stratifiedSplit.py`
+### 3. `stratifiedSplit.py`
 
 This script organizes images into train, test, and validation sets using a stratified split.
 
@@ -44,7 +52,7 @@ This script organizes images into train, test, and validation sets using a strat
 
 ---
 
-## 4. `datasetCleaning-1.py`
+### 4. `datasetCleaning-1.py`
 
 This script identifies and removes corrupted, blank, and inconsistent images from a dataset directory.
 
@@ -55,7 +63,7 @@ This script identifies and removes corrupted, blank, and inconsistent images fro
 
 ---
 
-## 5. `datasetCleaning-2.py`
+### 5. `datasetCleaning-2.py`
 
 This script uses face detection and feature extraction from a ResNet model to identify and process facial images in a dataset.
 
@@ -67,7 +75,7 @@ This script uses face detection and feature extraction from a ResNet model to id
 
 ---
 
-## 6. `frameExtractor.py`
+### 6. `frameExtractor.py`
 
 This script is designed to extract frames from AVI videos at specified time marks.
 
@@ -79,7 +87,7 @@ This script is designed to extract frames from AVI videos at specified time mark
 
 ---
 
-## 7. `categorizeImages.py`
+### 7. `categorizeImages.py`
 
 This script is developed to categorize images based on labels from a CSV and move them to their respective directories.
 
@@ -90,7 +98,7 @@ This script is developed to categorize images based on labels from a CSV and mov
 
 ---
 
-## 8. `utilityFunction1.py`
+### 8. `utilityFunction1.py`
 
 This script provides utilities for renaming images and generating a new CSV based on renamed images and an original CSV.
 
@@ -100,7 +108,7 @@ This script provides utilities for renaming images and generating a new CSV base
 
 ---
 
-## 9. `dataVisualization.py`
+### 9. `dataVisualization.py`
 
 This script is built to visualize different aspects of an image dataset, including class distribution, sample images, and pixel intensity distributions.
 
@@ -112,7 +120,7 @@ This script is built to visualize different aspects of an image dataset, includi
 
 ---
 
-## Setup and Dependencies
+## Setup and Dependencies:
 
 ### Prerequisites:
 
@@ -179,7 +187,7 @@ python <script_name>.py
     - **Stratified Splitting:** Run `stratifiedSplit.py` to segment the data into train, test, and val portions.
 
 7. **Dataset Cleaning:**
-    - Run `datasetCleaning-1.py` followed by `datasetCleaning-2.py`. Make sure to verify the paths before execution.
+    - Run `datasetCleaning-1.py` followed by `datasetCleaning-2.py` for Dataset-3. Make sure to verify the paths before execution.
     
 8. **Utility Functions:**
     - Execute `utilityFunction1.py` to rename files as needed and then generate custom labels for Dataset-3.
