@@ -123,6 +123,39 @@ This script is built to visualize different aspects of an image dataset, includi
 - Displays a grid of random sample images from the dataset.
 - Plots pixel intensity distribution for a sample of images, either RGB or grayscale.
 
+### 10. `train.py`
+
+This script defines a convolutional neural network (CNN) for image classification, including the CustomCNN class, dataset loading functions, model training and validation, and performance evaluation on a test dataset.
+
+**Functionality:**
+- Defines the CustomCNN class for CNN models.
+- Loads image datasets for training, validation, and testing.
+- Trains and validates the CNN model.
+
+---
+
+### 11. `evaluate.py`
+
+This script includes functions for evaluating a trained CNN model on a test dataset, providing detailed performance metrics.
+
+**Functionality:**
+- Loads a trained CNN model and test dataset.
+- Evaluates the model on the test dataset.
+- Calculates and displays performance metrics like confusion matrix, precision, recall, and F1 score.
+- Plots confusion matrix and classification reports.
+
+---
+
+### 12. `test.py`
+
+This script is designed for making predictions on individual images using a trained CNN model.
+
+**Functionality:**
+- Loads a trained CNN model.
+- Predicts the class of individual images.
+- Displays the images with their predicted classes.
+
+
 ---
 
 ## Setup and Dependencies:
@@ -204,6 +237,44 @@ python <script_name>.py
     - Lastly, run `dataVisualization.py` for insights into the dataset.
 
 **After following the above steps meticulously, you will successfully curate a dataset that aligns precisely with the structure and format provided in our reference link.**
+
+---
+
+## Training, Testing, and Evaluation:
+
+After preparing the dataset, follow these steps to train, test, and evaluate the model using the scripts added to the repository.
+
+### Training the Model:
+
+1. **Execute `train.py`:**
+   - This script trains the CNN model using the processed dataset.
+   - Run the script by executing:
+     ```bash
+     python train.py
+     ```
+   - The trained model will be saved as `facial_model.pth`.
+
+### Testing the Model:
+
+2. **Execute `test.py`:**
+   - This script is used to make predictions on individual images.
+   - Before running, place the image you want to test in the root directory and name it `image.jpg` (or modify the script to point to the correct image path).
+   - Run the script by executing:
+     ```bash
+     python test.py
+     ```
+   - The script will display the image along with its predicted class.
+
+### Evaluating the Model:
+
+3. **Execute `evaluate.py`:**
+   - This script evaluates the trained model's performance on the test dataset.
+   - It will provide detailed metrics such as accuracy, confusion matrix, precision, recall, and F1 score.
+   - Run the script by executing:
+     ```bash
+     python evaluate.py
+     ```
+   - The results including a confusion matrix and classification report will be displayed.
 
 ---
 
