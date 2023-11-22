@@ -242,39 +242,57 @@ python <script_name>.py
 
 ## Training, Testing, and Evaluation:
 
-After preparing the dataset, follow these steps to train, test, and evaluate the model using the scripts added to the repository.
+After preparing the dataset, follow these steps to train, test, and evaluate the models using the updated scripts in the repository.
 
-### Training the Model:
+### Training the Models:
 
-1. **Execute `train.py`:**
-   - This script trains the CNN model using the processed dataset.
-   - Run the script by executing:
+1. **Execute `mainmodel-train.py`, `variant1-train.py`, and `variant2-train.py`:**
+   - These scripts train the respective CNN models using the processed dataset.
+   - Run each script by executing:
      ```bash
-     python train.py
+     python mainmodel-train.py
      ```
-   - The trained model will be saved as `facial_model.pth`.
+     ```bash
+     python variant1-train.py
+     ```
+     ```bash
+     python variant2-train.py
+     ```
+   - The trained models will be saved as `mainmodel-latest.pth`, `variant1-latest.pth`, and `variant2-latest.pth` respectively.
 
-### Testing the Model:
+### Testing the Models:
 
-2. **Execute `test.py`:**
-   - This script is used to make predictions on individual images.
+2. **Execute `mainmodel-test.py`, `variant1-test.py`, and `variant2-test.py`:**
+   - These scripts are used to make predictions on individual images for each model.
    - Before running, place the image you want to test in the root directory and name it `image.jpg` (or modify the script to point to the correct image path).
-   - Run the script by executing:
+   - Run each script by executing:
      ```bash
-     python test.py
+     python mainmodel-test.py
      ```
-   - The script will display the image along with its predicted class.
-
-### Evaluating the Model:
-
-3. **Execute `evaluate.py`:**
-   - This script evaluates the trained model's performance on the test dataset.
-   - It will provide detailed metrics such as accuracy, confusion matrix, precision, recall, and F1 score.
-   - Run the script by executing:
      ```bash
-     python evaluate.py
+     python variant1-test.py
      ```
-   - The results including a confusion matrix and classification report will be displayed.
+     ```bash
+     python variant2-test.py
+     ```
+   - Each script will display the image along with its predicted class for the respective model.
+
+### Evaluating the Models:
+
+3. **Execute `mainmodel-evaluate.py`, `variant1-evaluate.py`, and `variant2-evaluate.py`:**
+   - These scripts evaluate each trained model's performance on the test dataset.
+   - They will provide detailed metrics such as accuracy, confusion matrix, precision, recall, and F1 score for each model.
+   - Run each script by executing:
+     ```bash
+     python mainmodel-evaluate.py
+     ```
+     ```bash
+     python variant1-evaluate.py
+     ```
+     ```bash
+     python variant2-evaluate.py
+     ```
+   - The results, including a confusion matrix and classification report for each model, will be displayed.
 
 ---
 
