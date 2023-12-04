@@ -156,6 +156,48 @@ This script is designed for making predictions on individual images using a trai
 - Displays the images with their predicted classes.
 
 
+### 13. `ageBiasTest.py`
+
+This script implements a bias test for age in image classification using a custom convolutional neural network (CNN). It imports libraries like PyTorch for neural network implementation and sklearn for accuracy and performance metrics. The script includes a CustomCNN class with convolutional layers and functions for data loading and model evaluation.
+
+**Functionality:**
+- Implements a custom CNN with PyTorch for age bias testing.
+- Provides functions for data loading and preprocessing.
+- Evaluates model performance with accuracy, precision, recall, and F1 score.
+
+---
+
+### 14. `ageGenderPredictionPipeline.py`
+
+This script sets up a pipeline for predicting age and gender from images. It uses OpenCV for deep neural network operations, pandas for data manipulation, and predefined constants for model and dataset management. Functions include model loading, CUDA optimization, and prediction execution.
+
+**Functionality:**
+- Utilizes OpenCV for neural network operations in age and gender prediction.
+- Manages dataset and model parameters with predefined constants.
+- Executes age and gender predictions on datasets.
+
+---
+
+### 15. `genderBiasTest.py`
+
+Similar to `ageBiasTest.py`, this script focuses on testing gender bias in image classification models. It includes a CustomCNN class designed for gender bias evaluation, using PyTorch for neural network implementation and sklearn for performance metrics.
+
+**Functionality:**
+- Features a custom CNN model for gender bias testing in images.
+- Includes data loading and preprocessing functions.
+- Assesses model performance using standard metrics like accuracy and F1 score.
+
+---
+
+### 16. `kFoldCrossValidation.py`
+
+This script is dedicated to performing k-fold cross-validation on image classification models. It includes a CustomCNN class, utilizes PyTorch for model definition, and sklearn for k-fold implementation and performance evaluation.
+
+**Functionality:**
+- Implements k-fold cross-validation using a custom CNN model.
+- Utilizes PyTorch for neural network operations and model training.
+- Employs sklearn for dataset splitting and performance evaluation.
+
 ---
 
 ## Setup and Dependencies:
@@ -293,6 +335,46 @@ After preparing the dataset, follow these steps to train, test, and evaluate the
      python variant2-evaluate.py
      ```
    - The results, including a confusion matrix and classification report for each model, will be displayed.
+
+---
+
+## Bias Analysis and Model Validation:
+
+To perform a comprehensive bias analysis and validate your model, follow these steps using the newly added scripts in the repository.
+
+### Labeling the Dataset:
+
+1. **Execute `ageGenderPredictionPipeline.py`:**
+   - This script labels the dataset with age and gender predictions, essential for subsequent bias analysis.
+   - Run the script by executing:
+     ```bash
+     python ageGenderPredictionPipeline.py
+     ```
+   - Ensure your dataset is in the specified format and directory as required by the script.
+
+### Model Validation:
+
+2. **Execute `kFoldCrossValidation.py`:**
+   - This script performs k-fold cross-validation to validate your model's performance and robustness.
+   - Run the script by executing:
+     ```bash
+     python kFoldCrossValidation.py
+     ```
+   - The script will output the performance of each fold, helping you identify the best model configuration.
+
+### Bias Testing:
+
+3. **Execute `ageBiasTest.py` and `genderBiasTest.py`:**
+   - After model validation, use these scripts to test for any age and gender biases.
+   - First, execute `ageBiasTest.py` by:
+     ```bash
+     python ageBiasTest.py
+     ```
+   - Then, execute `genderBiasTest.py` by:
+     ```bash
+     python genderBiasTest.py
+     ```
+   - Both scripts will evaluate the biases in your model, providing insights into any disparities in age and gender predictions.
 
 ---
 
